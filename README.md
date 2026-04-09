@@ -16,7 +16,7 @@ A classic 2D space shooter game built with Python and Pygame. Defend Earth by sh
 
 ## 🖼️ Screenshots
 
-## ![Main Menu](screenshot/main.png)
+## ![Main Menu](screenshorts/gameplay.png)
 
 ---
 
