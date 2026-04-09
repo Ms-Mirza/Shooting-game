@@ -1,6 +1,18 @@
 
 import pygame as p
 from pygame.sprite import Sprite
+
+import sys
+import os
+
+# Add this function at the top of alien.py
+def resource_path(relative_path):
+    """Get absolute path — works for both dev and PyInstaller .exe"""
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, relative_path)
+
 class Alien(Sprite):
     '''A class to represent a single alien in the fleet'''
     def __init__(self, ai_settings, screen):
@@ -10,7 +22,7 @@ class Alien(Sprite):
         self.ai_settings = ai_settings
 
         # Load the alien image and set its rect attribute.abs
-        self.image = p.image.load('E:\\coding\\projects\\projectPy(game, data_V, web_app))\\shooting game\\image\\alien.bmp')
+        self.image = p.image.load(resource_path('image/alien.bmp'))
 
         # resize imapge
         self.image = p.transform.scale(self.image,(65,75))

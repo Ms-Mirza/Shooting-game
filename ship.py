@@ -1,6 +1,17 @@
 import pygame as p
 from pygame.sprite import Sprite
 
+import sys
+import os
+
+# Add this function at the top of ship.py 
+def resource_path(relative_path):
+    """Get absolute path — works for both dev and PyInstaller .exe"""
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, relative_path)
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, relative_path)
+
 class Ship(Sprite):
     def __init__(self, ai_settings, screen):
         super(Ship, self).__init__()
@@ -8,7 +19,7 @@ class Ship(Sprite):
         self.ai_settings = ai_settings
 
         # load ship image and get its rect
-        self.image = p.image.load('E:\coding\projects\projectPy(game, data_V, web_app))\shooting game\image\ship.bmp')
+        self.image = p.image.load(resource_path('image/ship.bmp'))
         
         # resize imapge
         self.image = p.transform.scale(self.image,(65,75))
